@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/build-optical-coating-review/claim.schema.json",
+  "title": "Claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "claim_id", "claim_text_zh", "claim_text_en", "claim_type", "source_links", "evidence_type", "evidence_strength", "consistency", "applicability_conditions", "limitations", "intended_section", "human_status", "minimum_verification_level", "notes"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "claim_id": {"$ref": "common.schema.json#/$defs/claimId"},
+    "claim_text_zh": {"type": ["string", "null"]},
+    "claim_text_en": {"type": ["string", "null"]},
+    "claim_type": {"enum": ["BACKGROUND", "DESCRIPTIVE", "COMPARATIVE", "QUANTITATIVE", "MECHANISTIC", "CAUSAL", "METHOD", "CONSENSUS", "CONTROVERSY", "RESEARCH_GAP", "APPLICATION"]},
+    "source_links": {"type": "array", "items": {"$ref": "#/$defs/sourceLink"}},
+    "evidence_type": {"enum": ["METADATA", "ABSTRACT", "FULL_TEXT_STATEMENT", "TABLE", "FIGURE", "SUPPLEMENT", "STANDARD", "DERIVED_CALCULATION", "SYNTHESIS"]},
+    "evidence_strength": {"enum": ["UNASSESSED", "WEAK", "MODERATE", "STRONG"]},
+    "consistency": {"enum": ["UNASSESSED", "CONSISTENT", "MIXED", "CONTRADICTORY", "SINGLE_SOURCE"]},
+    "applicability_conditions": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "intended_section": {"type": ["string", "null"]},
+    "human_status": {"enum": ["UNREVIEWED", "REVIEW_REQUIRED", "ACCEPTED", "REVISE", "REJECTED"]},
+    "minimum_verification_level": {"$ref": "common.schema.json#/$defs/verificationLevel"},
+    "notes": {"type": ["string", "null"]}
+  },
+  "$defs": {
+    "sourceLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "original_location", "relation", "verification_level"],
+      "properties": {
+        "source_id": {"$ref": "common.schema.json#/$defs/sourceId"},
+        "original_location": {"type": ["string", "null"]},
+        "relation": {"enum": ["SUPPORTS", "CONTRADICTS", "QUALIFIES", "BACKGROUND_ONLY"]},
+        "verification_level": {"$ref": "common.schema.json#/$defs/verificationLevel"}
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+schema_version: 1.0.0
+project_id: null
+project_title: null
+review_type: UNDECIDED
+execution_mode: single_task_confirmation
+project_status: NOT_STARTED
+current_stage: STEP_00
+current_task: STEP-00
+current_subtask: null
+current_chapter: null
+paused: false
+pause_reason: null
+tasks:
+  - {task_id: STEP-00, status: NOT_STARTED, prerequisites: [], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-01, status: NOT_STARTED, prerequisites: [STEP-00], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-02, status: NOT_STARTED, prerequisites: [TASK-01], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-03, status: NOT_STARTED, prerequisites: [TASK-02], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-04, status: NOT_STARTED, prerequisites: [TASK-03], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-05, status: NOT_STARTED, prerequisites: [TASK-04], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-06, status: NOT_STARTED, prerequisites: [TASK-05], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-07, status: NOT_STARTED, prerequisites: [TASK-06], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-08, status: NOT_STARTED, prerequisites: [TASK-07], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-09, status: NOT_STARTED, prerequisites: [TASK-08], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-10, status: NOT_STARTED, prerequisites: [TASK-09], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-11, status: NOT_STARTED, prerequisites: [TASK-10], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-12, status: NOT_STARTED, prerequisites: [TASK-11], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-13, status: NOT_STARTED, prerequisites: [TASK-12], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-14, status: NOT_STARTED, prerequisites: [TASK-13], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-15, status: NOT_STARTED, prerequisites: [TASK-14], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-16, status: NOT_STARTED, prerequisites: [TASK-15], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-17, status: NOT_STARTED, prerequisites: [TASK-16], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-18, status: NOT_STARTED, prerequisites: [TASK-17], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-19, status: NOT_STARTED, prerequisites: [TASK-18], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-20, status: NOT_STARTED, prerequisites: [TASK-19], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+task_21_subtasks:
+  - {task_id: TASK-21A, status: NOT_STARTED, prerequisites: [TASK-20], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-21B, status: NOT_STARTED, prerequisites: [TASK-21A], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-21C, status: NOT_STARTED, prerequisites: [TASK-21B], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-21D, status: NOT_STARTED, prerequisites: [TASK-21C], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-21E, status: NOT_STARTED, prerequisites: [TASK-21D], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-21F, status: NOT_STARTED, prerequisites: [TASK-21E], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-21G, status: NOT_STARTED, prerequisites: [TASK-21F], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+  - {task_id: TASK-21H, status: NOT_STARTED, prerequisites: [TASK-21G], input_paths: [], output_paths: [], quality_gate_passed: null, approval: null, blocker_id: null, result_id: null, updated_at: null}
+approved_task: null
+last_approved_output: null
+risk_ids: []
+manual_check_ids: []
+current_inputs: []
+last_user_decision: null
+created_at: null
+updated_at: null

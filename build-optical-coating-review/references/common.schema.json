@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/build-optical-coating-review/common.schema.json",
+  "title": "Optical Coating Review Common Definitions",
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "nullableString": {"type": ["string", "null"]},
+    "dateTime": {"type": "string", "format": "date-time"},
+    "status": {
+      "type": "string",
+      "enum": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "REVIEW_REQUIRED", "APPROVED", "REJECTED", "SKIPPED_WITH_RISK", "SUPERSEDED", "ARCHIVED"]
+    },
+    "verificationLevel": {
+      "type": "string",
+      "enum": ["V0", "V1", "V2", "V3", "V4", "V5"]
+    },
+    "taskId": {
+      "type": "string",
+      "pattern": "^(STEP-00|TASK-(0[1-9]|1[0-9]|20|21[A-H]))$"
+    },
+    "sourceId": {"type": "string", "pattern": "^SRC-[A-Z0-9][A-Z0-9._-]*$"},
+    "claimId": {"type": "string", "pattern": "^CLM-[A-Za-z0-9.]+-[0-9]{2,}$"},
+    "approvalRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "decision_text", "decided_by", "decided_at", "output_paths"],
+      "properties": {
+        "decision": {"enum": ["APPROVED", "REJECTED", "SKIPPED_WITH_RISK"]},
+        "decision_text": {"$ref": "#/$defs/nonEmptyString"},
+        "decided_by": {"$ref": "#/$defs/nonEmptyString"},
+        "decided_at": {"$ref": "#/$defs/dateTime"},
+        "output_paths": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "risk_id": {"type": ["string", "null"]}
+      }
+    },
+    "fileRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "role", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "role": {"type": "string", "minLength": 1},
+        "sha256": {"type": ["string", "null"], "pattern": "^[a-fA-F0-9]{64}$"},
+        "version": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

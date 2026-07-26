@@ -1,0 +1,4 @@
+interface:
+  display_name: "Optical Coating Review Builder"
+  short_description: "Build evidence-traceable optical coating literature reviews"
+  default_prompt: "Use $build-optical-coating-review to initialize an evidence-traceable optical coating literature review project and stop after the first approval gate."

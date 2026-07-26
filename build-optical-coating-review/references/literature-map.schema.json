@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/build-optical-coating-review/literature-map.schema.json",
+  "title": "Literature Map",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "map_id", "project_id", "generated_at", "nodes", "edges", "views"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "map_id": {"type": ["string", "null"]},
+    "project_id": {"type": ["string", "null"]},
+    "generated_at": {"anyOf": [{"$ref": "common.schema.json#/$defs/dateTime"}, {"type": "null"}]},
+    "nodes": {"type": "array", "items": {"$ref": "#/$defs/node"}},
+    "edges": {"type": "array", "items": {"$ref": "#/$defs/edge"}},
+    "views": {"type": "array", "items": {"enum": ["TIME_EVOLUTION", "MATERIAL_PROCESS_STRUCTURE_PERFORMANCE", "THEME_CLUSTER", "METHOD_CHARACTERIZATION_MATRIX", "CONSENSUS_CONTROVERSY", "EVIDENCE_LAYER"]}, "uniqueItems": true}
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "title", "year", "journal", "document_type", "materials", "substrates", "coatings", "deposition_routes", "interface_strategies", "optical_properties", "mechanical_properties", "environmental_properties", "manufacturing_properties", "characterization_methods", "evidence_types", "verification_level", "themes", "research_stage", "intended_uses", "evidence_strength"],
+      "properties": {
+        "source_id": {"$ref": "common.schema.json#/$defs/sourceId"},
+        "title": {"type": ["string", "null"]},
+        "year": {"type": ["integer", "null"], "minimum": 1600, "maximum": 2200},
+        "journal": {"type": ["string", "null"]},
+        "document_type": {"type": ["string", "null"]},
+        "materials": {"type": "array", "items": {"type": "string"}},
+        "substrates": {"type": "array", "items": {"type": "string"}},
+        "coatings": {"type": "array", "items": {"type": "string"}},
+        "deposition_routes": {"type": "array", "items": {"type": "string"}},
+        "interface_strategies": {"type": "array", "items": {"type": "string"}},
+        "optical_properties": {"type": "array", "items": {"type": "string"}},
+        "mechanical_properties": {"type": "array", "items": {"type": "string"}},
+        "environmental_properties": {"type": "array", "items": {"type": "string"}},
+        "manufacturing_properties": {"type": "array", "items": {"type": "string"}},
+        "characterization_methods": {"type": "array", "items": {"type": "string"}},
+        "evidence_types": {"type": "array", "items": {"type": "string"}},
+        "verification_level": {"$ref": "common.schema.json#/$defs/verificationLevel"},
+        "themes": {"type": "array", "items": {"type": "string"}},
+        "research_stage": {"type": ["string", "null"]},
+        "intended_uses": {"type": "array", "items": {"enum": ["CORE", "SUPPORTING", "BACKGROUND", "METHOD", "CONFLICT"]}},
+        "evidence_strength": {"enum": ["UNASSESSED", "WEAK", "MODERATE", "STRONG"]}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_id", "from_source_id", "to_source_id", "relation", "basis", "original_locations", "verification_level", "human_status"],
+      "properties": {
+        "edge_id": {"type": "string", "pattern": "^EDGE-[A-Z0-9][A-Z0-9._-]*$"},
+        "from_source_id": {"$ref": "common.schema.json#/$defs/sourceId"},
+        "to_source_id": {"$ref": "common.schema.json#/$defs/sourceId"},
+        "relation": {"enum": ["SUPPORTS", "CONTRADICTS", "EXTENDS", "USES_METHOD_FROM", "SHARES_MATERIAL_SYSTEM", "SHARES_DEPOSITION_ROUTE", "REPORTS_COMPARABLE_METRIC", "STRUCTURAL_REFERENCE", "BACKGROUND_ONLY"]},
+        "basis": {"type": "string", "minLength": 1},
+        "original_locations": {"type": "array", "items": {"type": "string"}},
+        "verification_level": {"$ref": "common.schema.json#/$defs/verificationLevel"},
+        "human_status": {"enum": ["UNREVIEWED", "REVIEW_REQUIRED", "ACCEPTED", "REJECTED"]}
+      }
+    }
+  }
+}

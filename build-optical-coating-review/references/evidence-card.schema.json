@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/build-optical-coating-review/evidence-card.schema.json",
+  "title": "Evidence Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "evidence_card_id", "source_id", "citation", "research_question", "material_system", "substrate", "coating", "deposition_method", "interface_strategy", "process_conditions", "characterization_methods", "key_results", "author_interpretation", "skill_assessment", "supported_claim_ids", "comparison_uses", "figure_table_uses", "original_locations", "verification_level", "evidence_strength", "limitations", "citation_risks", "human_status"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "evidence_card_id": {"type": "string", "pattern": "^EC-[A-Z0-9][A-Z0-9._-]*$"},
+    "source_id": {"$ref": "common.schema.json#/$defs/sourceId"},
+    "citation": {"type": ["string", "null"]},
+    "research_question": {"type": ["string", "null"]},
+    "material_system": {"type": ["string", "null"]},
+    "substrate": {"type": ["string", "null"]},
+    "coating": {"type": ["string", "null"]},
+    "deposition_method": {"type": ["string", "null"]},
+    "interface_strategy": {"type": ["string", "null"]},
+    "process_conditions": {"type": "array", "items": {"type": "string"}},
+    "characterization_methods": {"type": "array", "items": {"type": "string"}},
+    "key_results": {"type": "array", "items": {"$ref": "#/$defs/result"}},
+    "author_interpretation": {"type": "array", "items": {"type": "string"}},
+    "skill_assessment": {"type": "array", "items": {"type": "string"}},
+    "supported_claim_ids": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/claimId"}, "uniqueItems": true},
+    "comparison_uses": {"type": "array", "items": {"type": "string"}},
+    "figure_table_uses": {"type": "array", "items": {"type": "string"}},
+    "original_locations": {"type": "array", "items": {"type": "string"}},
+    "verification_level": {"$ref": "common.schema.json#/$defs/verificationLevel"},
+    "evidence_strength": {"enum": ["UNASSESSED", "WEAK", "MODERATE", "STRONG"]},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "citation_risks": {"type": "array", "items": {"type": "string"}},
+    "human_status": {"enum": ["UNREVIEWED", "REVIEW_REQUIRED", "ACCEPTED", "REVISE", "REJECTED"]}
+  },
+  "$defs": {
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric", "value", "unit", "conditions", "original_location"],
+      "properties": {
+        "metric": {"type": "string"},
+        "value": {"type": ["number", "string", "null"]},
+        "unit": {"type": ["string", "null"]},
+        "conditions": {"type": ["string", "null"]},
+        "original_location": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/build-optical-coating-review/figure-table-traceability.schema.json",
+  "title": "Figure and Table Traceability Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "trace_id", "artifact_id", "artifact_type", "element_id", "target_location", "source_id", "original_location", "transformation", "calculation", "copyright_status", "permission_reference", "verification_level", "human_status", "notes"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "trace_id": {"type": "string", "pattern": "^TRC-[A-Z0-9][A-Z0-9._-]*$"},
+    "artifact_id": {"type": "string", "pattern": "^(FIG|TAB)-[A-Za-z0-9._-]+$"},
+    "artifact_type": {"enum": ["FIGURE", "FIGURE_ELEMENT", "TABLE", "TABLE_CELL"]},
+    "element_id": {"type": ["string", "null"]},
+    "target_location": {"type": ["string", "null"]},
+    "source_id": {"$ref": "common.schema.json#/$defs/sourceId"},
+    "original_location": {"type": "string", "minLength": 1},
+    "transformation": {"enum": ["DIRECT_REUSE", "REDRAWN", "ADAPTED", "DIGITIZED", "CALCULATED", "SYNTHESIZED"]},
+    "calculation": {"type": ["string", "null"]},
+    "copyright_status": {"enum": ["UNASSESSED", "ORIGINAL", "LICENSED", "PERMISSION_REQUIRED", "PERMISSION_OBTAINED", "FAIR_USE_ASSESSED", "NOT_REUSABLE"]},
+    "permission_reference": {"type": ["string", "null"]},
+    "verification_level": {"$ref": "common.schema.json#/$defs/verificationLevel"},
+    "human_status": {"enum": ["UNREVIEWED", "REVIEW_REQUIRED", "ACCEPTED", "REVISE", "REJECTED"]},
+    "notes": {"type": ["string", "null"]}
+  }
+}

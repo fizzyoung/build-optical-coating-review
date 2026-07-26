@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": null,
+  "project_title": null,
+  "review_type": "UNDECIDED",
+  "language": null,
+  "created_at": null,
+  "updated_at": null,
+  "state_file": "project_state.yaml",
+  "task_register": "task_register.xlsx",
+  "decision_log": "decision_log.md",
+  "risk_register": "risk_register.xlsx",
+  "manual_checklist": "manual_checklist.xlsx",
+  "research_roadmap": "research_roadmap.xlsx",
+  "schema_directory": "references",
+  "directories": {
+    "working": "working",
+    "outputs": "outputs",
+    "qa": "qa",
+    "logs": "logs"
+  },
+  "approved_outputs": [],
+  "file_hashes": {}
+}

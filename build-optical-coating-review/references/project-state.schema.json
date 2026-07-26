@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/build-optical-coating-review/project-state.schema.json",
+  "title": "Project State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_id", "project_title", "review_type", "execution_mode", "project_status", "current_stage", "current_task", "current_subtask", "paused", "tasks", "task_21_subtasks", "risk_ids", "manual_check_ids", "current_inputs", "last_user_decision", "updated_at"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "project_id": {"type": ["string", "null"]},
+    "project_title": {"type": ["string", "null"]},
+    "review_type": {"enum": ["UNDECIDED", "NARRATIVE_REVIEW", "SYSTEMATIC_REVIEW"]},
+    "execution_mode": {"enum": ["single_task_confirmation", "stage_batch"]},
+    "project_status": {"$ref": "common.schema.json#/$defs/status"},
+    "current_stage": {"enum": ["STEP_00", "STAGE_1", "STAGE_2", "STAGE_3", "STAGE_4"]},
+    "current_task": {"anyOf": [{"$ref": "common.schema.json#/$defs/taskId"}, {"type": "null"}]},
+    "current_subtask": {"type": ["string", "null"], "pattern": "^TASK-21[A-H]$"},
+    "current_chapter": {"type": ["string", "null"]},
+    "paused": {"type": "boolean"},
+    "pause_reason": {"type": ["string", "null"]},
+    "tasks": {"type": "array", "items": {"$ref": "#/$defs/taskState"}, "uniqueItems": true},
+    "task_21_subtasks": {"type": "array", "items": {"$ref": "#/$defs/taskState"}, "uniqueItems": true},
+    "approved_task": {"anyOf": [{"$ref": "common.schema.json#/$defs/taskId"}, {"type": "null"}]},
+    "last_approved_output": {"type": ["string", "null"]},
+    "risk_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "manual_check_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "current_inputs": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/fileRecord"}},
+    "last_user_decision": {"anyOf": [{"$ref": "common.schema.json#/$defs/approvalRecord"}, {"type": "null"}]},
+    "created_at": {"anyOf": [{"$ref": "common.schema.json#/$defs/dateTime"}, {"type": "null"}]},
+    "updated_at": {"anyOf": [{"$ref": "common.schema.json#/$defs/dateTime"}, {"type": "null"}]}
+  },
+  "$defs": {
+    "taskState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_id", "status", "prerequisites", "input_paths", "output_paths", "quality_gate_passed", "approval", "blocker_id", "result_id", "updated_at"],
+      "properties": {
+        "task_id": {"$ref": "common.schema.json#/$defs/taskId"},
+        "status": {"$ref": "common.schema.json#/$defs/status"},
+        "prerequisites": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/taskId"}, "uniqueItems": true},
+        "input_paths": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "output_paths": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "quality_gate_passed": {"type": ["boolean", "null"]},
+        "approval": {"anyOf": [{"$ref": "common.schema.json#/$defs/approvalRecord"}, {"type": "null"}]},
+        "blocker_id": {"type": ["string", "null"]},
+        "result_id": {"type": ["string", "null"]},
+        "updated_at": {"anyOf": [{"$ref": "common.schema.json#/$defs/dateTime"}, {"type": "null"}]}
+      }
+    }
+  }
+}

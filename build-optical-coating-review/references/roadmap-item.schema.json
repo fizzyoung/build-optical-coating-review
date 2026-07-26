@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/build-optical-coating-review/roadmap-item.schema.json",
+  "title": "Research Roadmap Item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "roadmap_item_id", "research_question", "stage", "task", "prerequisites", "evidence_needed", "preferred_sources", "planned_deliverable", "decision_gate", "risk", "status", "owner", "last_updated"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "roadmap_item_id": {"type": "string", "pattern": "^RM-[0-9]{3,}$"},
+    "research_question": {"type": "string", "minLength": 1},
+    "stage": {"enum": ["STEP_00", "STAGE_1", "STAGE_2", "STAGE_3", "STAGE_4"]},
+    "task": {"$ref": "common.schema.json#/$defs/taskId"},
+    "prerequisites": {"type": "array", "items": {"type": "string"}},
+    "evidence_needed": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "preferred_sources": {"type": "array", "items": {"type": "string"}},
+    "planned_deliverable": {"type": "string", "minLength": 1},
+    "decision_gate": {"type": "string", "minLength": 1},
+    "risk": {"type": ["string", "null"]},
+    "status": {"$ref": "common.schema.json#/$defs/status"},
+    "owner": {"type": ["string", "null"]},
+    "last_updated": {"type": ["string", "null"], "format": "date"}
+  }
+}
