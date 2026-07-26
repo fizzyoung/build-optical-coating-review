@@ -308,6 +308,30 @@ class ScriptTests(unittest.TestCase):
             write_json(invalid_path, [invalid])
             run_script("audit_figures_tables.py", invalid_path, sources, root / "invalid-trace-report.json", expected=3)
 
+    def test_distribution_hash_normalizes_text_line_endings(self):
+        if str(SCRIPTS) not in sys.path:
+            sys.path.insert(0, str(SCRIPTS))
+        import _distribution
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            lf_root = root / "lf"
+            crlf_root = root / "crlf"
+            fixtures = {
+                "SKILL.md": "---\nname: fixture\ndescription: Fixture skill.\n---\n\n# Fixture\n",
+                "agents/openai.yaml": "interface:\n  display_name: Fixture\n",
+                "references/example.md": "# Example\n\nCanonical text.\n",
+            }
+            for relative, text in fixtures.items():
+                lf_path = lf_root / relative
+                crlf_path = crlf_root / relative
+                lf_path.parent.mkdir(parents=True, exist_ok=True)
+                crlf_path.parent.mkdir(parents=True, exist_ok=True)
+                lf_path.write_bytes(text.encode("utf-8"))
+                crlf_path.write_bytes(text.replace("\n", "\r\n").encode("utf-8"))
+            self.assertEqual(_distribution.source_hash(lf_root), _distribution.source_hash(crlf_root))
+            self.assertEqual(_distribution.source_manifest(lf_root), _distribution.source_manifest(crlf_root))
+
     def test_portable_builder_is_reproducible_and_parity_detects_tampering(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

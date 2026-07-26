@@ -6,6 +6,14 @@ from pathlib import Path
 TEXT_SUFFIXES = {".md", ".json", ".yaml", ".yml", ".py", ".mjs", ".txt", ".csv", ".tsv"}
 
 
+def canonical_bytes(path: Path) -> bytes:
+    data = path.read_bytes()
+    if path.suffix.lower() not in TEXT_SUFFIXES:
+        return data
+    text = data.decode("utf-8-sig").replace("\r\n", "\n").replace("\r", "\n")
+    return text.encode("utf-8")
+
+
 def source_files(skill_root: Path) -> list[Path]:
     skill_root = skill_root.resolve()
     files = [skill_root / "SKILL.md", skill_root / "agents" / "openai.yaml"]
@@ -16,9 +24,10 @@ def source_files(skill_root: Path) -> list[Path]:
 
 
 def source_manifest(skill_root: Path) -> list[dict[str, object]]:
+    skill_root = skill_root.resolve()
     result = []
     for path in source_files(skill_root):
-        data = path.read_bytes()
+        data = canonical_bytes(path)
         result.append(
             {
                 "path": path.relative_to(skill_root).as_posix(),

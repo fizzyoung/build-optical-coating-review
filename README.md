@@ -51,7 +51,7 @@ Python 3.11 or newer is recommended. With `uv` installed:
 uv run --with PyYAML --with jsonschema --with openpyxl python tests/build-optical-coating-review/run_regression.py --installed-skill-root build-optical-coating-review
 ```
 
-The current release passes 17 regression tests covering all 12 deterministic scripts, success paths, expected failures, immutable outputs, and source/distribution parity.
+The current release passes 18 regression tests covering all 12 deterministic scripts, success paths, expected failures, immutable outputs, cross-platform source hashing, and source/distribution parity.
 
 ## License
 

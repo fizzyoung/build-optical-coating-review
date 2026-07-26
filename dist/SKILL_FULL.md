@@ -1,9 +1,9 @@
-Portable Content SHA-256: `0352b0a822fe5cd31502ef67f3c337f7262934533fccb25c12e96b997179d878`
+Portable Content SHA-256: `cad76bc38d40abbcdaff9d65c0f29362c562f5f270f48c76976d90195ba690e5`
 <!-- GENERATED FILE: DO NOT EDIT. Rebuild with scripts/build_full_skill.py. -->
 # Build Optical Coating Review - Portable Full Skill
 
 Generated at: `2026-07-26T00:00:00Z`  
-Source SHA-256: `a9566715d56ee0e3326056176d61415b13e292ba6efea5819d82f775a79368c3`
+Source SHA-256: `9c61ec3d13665aa6c57d4142eb4968e98cff1e383025783223d3913ffe3a8d1a`
 
 This portable document mirrors the modular Skill. The modular Codex Skill remains the authoritative runtime form.
 
@@ -2668,6 +2668,14 @@ from pathlib import Path
 TEXT_SUFFIXES = {".md", ".json", ".yaml", ".yml", ".py", ".mjs", ".txt", ".csv", ".tsv"}
 
 
+def canonical_bytes(path: Path) -> bytes:
+    data = path.read_bytes()
+    if path.suffix.lower() not in TEXT_SUFFIXES:
+        return data
+    text = data.decode("utf-8-sig").replace("\r\n", "\n").replace("\r", "\n")
+    return text.encode("utf-8")
+
+
 def source_files(skill_root: Path) -> list[Path]:
     skill_root = skill_root.resolve()
     files = [skill_root / "SKILL.md", skill_root / "agents" / "openai.yaml"]
@@ -2678,9 +2686,10 @@ def source_files(skill_root: Path) -> list[Path]:
 
 
 def source_manifest(skill_root: Path) -> list[dict[str, object]]:
+    skill_root = skill_root.resolve()
     result = []
     for path in source_files(skill_root):
-        data = path.read_bytes()
+        data = canonical_bytes(path)
         result.append(
             {
                 "path": path.relative_to(skill_root).as_posix(),
@@ -5681,8 +5690,8 @@ approval: null
   },
   {
     "path": "agents/openai.yaml",
-    "sha256": "ca9045b94585a51e7b89e9c933e5734b3bc23e46fb0ca459e9495dad6107a4db",
-    "size": 319
+    "sha256": "8406fabf3f42c1909c07d3cad5db6691d49e312298090b0df70e7aa33c1b2c09",
+    "size": 315
   },
   {
     "path": "references/claim.schema.json",
@@ -5866,8 +5875,8 @@ approval: null
   },
   {
     "path": "references/task-result.schema.json",
-    "sha256": "5064358105b771aa93364c56d1eb47f9adc45ae7bf655c74db889c5103c7c81d",
-    "size": 2203
+    "sha256": "d94ab424691b9750b27482fb5abd8c1aae678a8536b1699a0aafb7d731026f50",
+    "size": 2169
   },
   {
     "path": "scripts/_common.py",
@@ -5876,8 +5885,8 @@ approval: null
   },
   {
     "path": "scripts/_distribution.py",
-    "sha256": "4fecb06810ccd3935dbbd5a7b8987524fbaa82590c1ba53d066957f8570b70c7",
-    "size": 1463
+    "sha256": "4e1990b854029476ccf0896cf0e5066c8746a8e3639319cfffdf87ef30574de9",
+    "size": 1757
   },
   {
     "path": "scripts/audit_claims.py",
@@ -5891,8 +5900,8 @@ approval: null
   },
   {
     "path": "scripts/build_core_workbooks.mjs",
-    "sha256": "1f98e9fffb8adb55918ca9b2c6437f189866990cd789e58bf82fede21c2dacbb",
-    "size": 22667
+    "sha256": "ce842fcc62d595fa0aaae9e2a57f7f52cb35a48fc6b2e71b1cb46af4818fb230",
+    "size": 22417
   },
   {
     "path": "scripts/build_full_skill.py",
@@ -5906,8 +5915,8 @@ approval: null
   },
   {
     "path": "scripts/build_outline_template.py",
-    "sha256": "741666c3ee68716ce6beeb3afeb57fd1a91a5222354a1c2ef2235c7a14ee0664",
-    "size": 18851
+    "sha256": "97d7c1297707b6de81d1422f604f76f62c1d935ab295f7d4b02ea69f6869735c",
+    "size": 18850
   },
   {
     "path": "scripts/check_distribution_parity.py",
