@@ -1,9 +1,9 @@
-Portable Content SHA-256: `cad76bc38d40abbcdaff9d65c0f29362c562f5f270f48c76976d90195ba690e5`
+Portable Content SHA-256: `2ca1a71a50891ca110395a1fb2b2977b53cca1e4c003bf1f6bacdb698ba88f53`
 <!-- GENERATED FILE: DO NOT EDIT. Rebuild with scripts/build_full_skill.py. -->
 # Build Optical Coating Review - Portable Full Skill
 
 Generated at: `2026-07-26T00:00:00Z`  
-Source SHA-256: `9c61ec3d13665aa6c57d4142eb4968e98cff1e383025783223d3913ffe3a8d1a`
+Source SHA-256: `8901e58699c58491b8387336fc2695685ae5024c292671b3e3b93d502e540ee4`
 
 This portable document mirrors the modular Skill. The modular Codex Skill remains the authoritative runtime form.
 
@@ -205,7 +205,7 @@ The state machine, core Schema, core templates, Step 00 and Task 01-21H workflow
 
 The Stage 5 portable `SKILL_FULL.md` artifact is generated outside the installable Skill and verified against modular source and content hashes. Rebuild and re-run parity after every modular source change; never edit the generated file manually.
 
-The modular source package, DLC-on-chalcogenide-glass demonstration project, local Codex installation, and portable distribution artifact are implemented and regression-tested. GitHub publication is not yet implemented; do not claim that a remote repository or release is available until publication is completed and verified.
+The modular source package, DLC-on-chalcogenide-glass demonstration project, local Codex installation, portable distribution artifact, and public GitHub repository are implemented and regression-tested. The canonical repository is `https://github.com/fizzyoung/build-optical-coating-review` on `main` under the MIT License. Verify the remote state before making time-sensitive claims about the current commit, workflow run, or GitHub Release.
 
 <a id="module-agents-openai-yaml"></a>
 ## Module: `agents/openai.yaml`
@@ -5685,8 +5685,8 @@ approval: null
 [
   {
     "path": "SKILL.md",
-    "sha256": "8b6bda8d402356a46e8f86114ce73570a7f20e4a048365044cde6419d7621359",
-    "size": 9952
+    "sha256": "0dbdf2aa3f1b10cd8daa2e56dc6969171c75e8f9bdab947cb6d8817cc7fb42e6",
+    "size": 10068
   },
   {
     "path": "agents/openai.yaml",

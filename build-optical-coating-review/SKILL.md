@@ -120,4 +120,4 @@ The state machine, core Schema, core templates, Step 00 and Task 01-21H workflow
 
 The Stage 5 portable `SKILL_FULL.md` artifact is generated outside the installable Skill and verified against modular source and content hashes. Rebuild and re-run parity after every modular source change; never edit the generated file manually.
 
-The modular source package, DLC-on-chalcogenide-glass demonstration project, local Codex installation, and portable distribution artifact are implemented and regression-tested. GitHub publication is not yet implemented; do not claim that a remote repository or release is available until publication is completed and verified.
+The modular source package, DLC-on-chalcogenide-glass demonstration project, local Codex installation, portable distribution artifact, and public GitHub repository are implemented and regression-tested. The canonical repository is `https://github.com/fizzyoung/build-optical-coating-review` on `main` under the MIT License. Verify the remote state before making time-sensitive claims about the current commit, workflow run, or GitHub Release.
